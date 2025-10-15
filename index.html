@@ -309,20 +309,25 @@
         .objective-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
-            padding: 1.5rem;
+            padding: 2.5rem;  /* Increased padding */
             border-radius: 12px;
             border: 1px solid rgba(14, 165, 233, 0.3);
             transition: all 0.3s ease;
+            line-height: 1.8;  /* Increased line height */
         }
 
-        body.light-mode .objective-card {
-            background: var(--glass-bg-light);
-            border: 1px solid rgba(14, 165, 233, 0.2);
+        .objective-card h3 {
+            font-size: 1.4rem;  /* Increased font size */
+            margin-bottom: 1.5rem;  /* Increased margin */
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;  /* Added letter spacing */
         }
 
-        .objective-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
+        .objective-card p {
+            font-size: 1.1rem;  /* Increased font size */
+            max-width: 95%;  /* Added max-width */
+            margin: 0 auto;
+            letter-spacing: 0.3px;  /* Added letter spacing */
         }
 
         .strengths-card {
