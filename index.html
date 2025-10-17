@@ -316,10 +316,15 @@
             line-height: 1.8;  /* Increased line height */
         }
 
+        .objective-card:hover {
+            transform: translateY(-5px);  /* This creates the lifting effect */
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);  /* This adds the shadow on hover */
+}
+
         .objective-card h3 {
             font-size: 1.4rem;  /* Increased font size */
             margin-bottom: 1.5rem;  /* Increased margin */
-            color: var(--accent-cyan);
+            color: #0ea5e9;
             letter-spacing: 0.5px;  /* Added letter spacing */
         }
 
@@ -352,7 +357,7 @@
         .strengths-list {
             list-style: none;
             padding-left: 0;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
 
         .strengths-list li {
@@ -363,11 +368,11 @@
         }
 
         .strengths-list li:before {
-            content: '✔️';
+            /* content: '✔️'; */
             position: absolute;
             left: 0;
             color: #0ea5e9;
-            font-size: 1.2rem;
+            font-size: 1.2 rem;
             top: 0;
         }
 
@@ -405,9 +410,15 @@
         }
 
         .project-card p {
+            color: var(--text-light);
+            transition: color 0.3s ease;
             line-height: 1.6;
             margin-bottom: 1rem;
             opacity: 0.9;
+        }
+
+        body.light-mode .project-card p {
+            color: var(--text-dark);
         }
 
         .tech-tags {
@@ -527,28 +538,28 @@
             background: #0ea5e9;
             color: white;
             transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
         }
 
         .soft-skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .soft-skill-card {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(20, 184, 166, 0.1));
-            border-radius: 12px;
-            border: 1px solid #0ea5e9;
-            text-align: center;
-            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            border: 2px solid #0ea5e9;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .soft-skill-card:hover {
-            background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+            background: #0ea5e9;
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
         }
 
@@ -559,6 +570,52 @@
             border-radius: 12px;
             border-left: 4px solid var(--accent-purple);
             transition: all 0.3s ease;
+        }
+                /* Add these styles to your existing CSS */
+        .experience-subsection {
+            margin-bottom: 2rem;
+        }
+
+        .subsection-title {
+            font-size: 1.8rem;
+            color: var(white);
+            margin-bottom: 1.5rem;
+            /* background: var(--glass-bg); */
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .experience-card {
+            margin-bottom: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-purple);
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .experience-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            opacity: 0.9;
+        }
+
+        .experience-card p {
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
         }
 
         body.light-mode .experience-card {
@@ -621,7 +678,7 @@
 
         .contact-content {
             text-align: center;
-            max-width: 600px;
+            max-width: 400px;
             margin: 0 auto;
         }
 
@@ -637,7 +694,7 @@
             align-items: center;
             justify-content: center;
             gap: 1rem;
-            padding: 1.5rem;
+            padding: .5rem;
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             border-radius: 12px;
@@ -659,7 +716,19 @@
         }
 
         .contact-icon {
-            font-size: 1.8rem;
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        /* Make Codeforces icon white in dark mode */
+        body:not(.light-mode) img[alt="Codeforces"] {
+            filter: invert(1);
+        }
+
+        /* Adjust icon colors in light mode */
+        body.light-mode .contact-icon {
+            filter: brightness(0.4);
         }
 
         footer {
@@ -742,6 +811,61 @@
                 padding: 4rem 1rem 2rem;
             }
         }
+
+        /* Update these CSS rules to handle light mode text colors */
+
+        /* Career objective and strengths text */
+.objective-card p, .strengths-list li {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+body.light-mode .objective-card p, 
+body.light-mode .strengths-list li {
+    color: var(--text-dark);
+}
+
+/* Experience card text */
+.experience-card p,
+.experience-card h4 {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+body.light-mode .experience-card p,
+body.light-mode .experience-card h4 {
+    color: var(--text-dark);
+}
+
+/* Project card text */
+.project-card p {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+body.light-mode .project-card p {
+    color: var(--text-dark);
+}
+
+/* Subsection titles */
+.subsection-title {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+body.light-mode .subsection-title {
+    color: var(--text-dark);
+}
+
+/* Achievement card text */
+.achievement-card p {
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+body.light-mode .achievement-card p {
+    color: var(--text-dark);
+}
     </style>
 </head>
 <body>
@@ -867,59 +991,70 @@
                 <h3> Programming & Technical Skills</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
-                        <div class="skill-icon">🐍</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                        </div>
                         <span class="skill-name">Python</span>
-                        <span class="skill-tooltip">Python - Advanced</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">☕</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                        </div>
                         <span class="skill-name">Java</span>
-                        <span class="skill-tooltip">Java - Intermediate</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">📜</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        </div>
                         <span class="skill-name">JavaScript</span>
-                        <span class="skill-tooltip">JavaScript - Intermediate</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">©️</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C/C++">
+                        </div>
                         <span class="skill-name">C/C++</span>
-                        <span class="skill-tooltip">C/C++ - Intermediate</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🗄️</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
+                        </div>
                         <span class="skill-name">SQL</span>
-                        <span class="skill-tooltip">SQL - Intermediate</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🌐</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                        </div>
                         <span class="skill-name">HTML5</span>
-                        <span class="skill-tooltip">HTML5 - Advanced</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🎨</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">
+                        </div>
                         <span class="skill-name">CSS3</span>
-                        <span class="skill-tooltip">CSS3 - Advanced</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🐧</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+                        </div>
                         <span class="skill-name">Linux</span>
-                        <span class="skill-tooltip">Linux - Intermediate</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">📦</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                        </div>
                         <span class="skill-name">Git</span>
-                        <span class="skill-tooltip">Git - Advanced</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🐙</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub">
+                        </div>
                         <span class="skill-name">GitHub</span>
-                        <span class="skill-tooltip">GitHub - Advanced</span>
                     </div>
                     <div class="skill-item">
-                        <div class="skill-icon">🤖</div>
+                        <div class="skill-icon">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow">
+                        </div>
                         <span class="skill-name">TensorFlow</span>
-                        <span class="skill-tooltip">TensorFlow - Beginner</span>
                     </div>
                 </div>
             </div>
@@ -1009,19 +1144,15 @@
             <p style="font-size: 1.2rem; margin-bottom: 2rem;">Feel free to reach out for collaborations, opportunities, or just to say hi!</p>
             <div class="contact-links">
                 <a href="mailto:patelmanav0805@gmail.com" class="contact-link">
-                    <span class="contact-icon">📧</span>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Email" class="contact-icon">
                     <span>patelmanav0805@gmail.com</span>
                 </a>
-                <a href="tel:+919327998768" class="contact-link">
-                    <span class="contact-icon">📞</span>
-                    <span>+91-9327998768</span>
-                </a>
-                <a href="https://linkedin.com/in/manav-patel-97b485284" target="_blank" class="contact-link">
-                    <span class="contact-icon">🌐</span>
+                <a href="https://linkedin.com/in/manav-patel-97b485284" class="contact-link">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" class="contact-icon">
                     <span>LinkedIn Profile</span>
                 </a>
-                <a href="https://codeforces.com/profile/manavp8" target="_blank" class="contact-link">
-                    <span class="contact-icon">🧩</span>
+                <a href="https://codeforces.com/profile/manavp8" class="contact-link">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/codeforces.svg" alt="Codeforces" class="contact-icon">
                     <span>Codeforces: manavp8</span>
                 </a>
             </div>
